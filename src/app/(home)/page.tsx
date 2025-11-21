@@ -16,8 +16,8 @@ export default function Home() {
 	const { maxSM } = useSize()
 
 	return (
-		<div className='min-h-screen flex items-start justify-start p-4'>
-			<div className='flex gap-8 w-full max-w-7xl'>
+		<div className='min-h-screen flex items-start justify-start p-4 pt-8'>
+			<div className='flex gap-6 w-full max-w-7xl'>
 				{/* 左侧导航区域 - 在桌面端显示导航栏，移动端为空 */}
 				<div className='hidden lg:block w-80 flex-shrink-0'>
 					{/* 导航栏由NavCard组件绝对定位处理，这里留空 */}

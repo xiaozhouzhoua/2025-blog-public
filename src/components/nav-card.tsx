@@ -92,8 +92,8 @@ export default function NavCard() {
 	let position = useMemo(() => {
 		if (form === 'full')
 			return {
-				x: 24, // 固定在左边距离
-				y: 96 // 从顶部开始的距离
+				x: 32, // 固定在左边距离，稍微靠右一点
+				y: 32 // 从顶部开始的距离，更靠近顶部
 			}
 
 		return {
