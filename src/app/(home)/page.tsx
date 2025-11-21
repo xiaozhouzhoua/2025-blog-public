@@ -17,10 +17,10 @@ export default function Home() {
 	const { maxSM } = useSize()
 
 	return (
-		<div className='min-h-screen flex items-start justify-start p-1 pt-4'>
-			<div className='flex gap-2 w-full max-w-7xl'>
+		<div className='min-h-screen p-1 pt-4'>
+			<div className='flex gap-1 w-full max-w-7xl'>
 				{/* 左侧导航区域 - 在桌面端显示导航栏，移动端为空 */}
-				<div className='hidden lg:block flex-shrink-0 mr-1 mt-2'>
+				<div className='hidden lg:block flex-shrink-0'>
 					<SidebarNav />
 				</div>
 
