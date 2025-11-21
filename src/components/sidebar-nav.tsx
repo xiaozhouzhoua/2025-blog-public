@@ -68,27 +68,27 @@ export default function SidebarNav() {
 	}, [hoveredIndex, activeIndex])
 
 	return (
-		<div className='w-16 h-fit bg-white rounded-3xl p-3 shadow-lg'>
-			<Link className='flex items-center justify-center mb-3' href='/'>
-				<Image src='/images/avatar.png' alt='avatar' width={28} height={28} style={{ boxShadow: ' 0 6px 12px -3px #E2D9CE' }} className='rounded-full' />
+		<div className='w-20 h-fit bg-white rounded-3xl p-4 shadow-lg'>
+			<Link className='flex items-center justify-center mb-4' href='/'>
+				<Image src='/images/avatar.png' alt='avatar' width={36} height={36} style={{ boxShadow: ' 0 6px 12px -3px #E2D9CE' }} className='rounded-full' />
 			</Link>
 
-			<div className='flex flex-col items-center space-y-2'>
+			<div className='flex flex-col items-center space-y-3'>
 				{list.map((item, index) => (
 					<Link
 						key={item.href}
 						href={item.href}
 						className={cn(
-							'flex h-10 w-10 items-center justify-center rounded-xl transition-all',
+							'flex h-12 w-12 items-center justify-center rounded-xl transition-all',
 							activeIndex === index
 								? 'bg-orange-500 text-white'
 								: 'text-gray-400 hover:text-gray-600'
 						)}
 						onMouseEnter={() => setHoveredIndex(index)}>
-						<div className='flex h-5 w-5 items-center justify-center'>
+						<div className='flex h-6 w-6 items-center justify-center'>
 							{activeIndex === index ?
-								<item.iconActive className='h-5 w-5' /> :
-								<item.icon className='h-5 w-5' />
+								<item.iconActive className='h-6 w-6' /> :
+								<item.icon className='h-6 w-6' />
 							}
 						</div>
 					</Link>

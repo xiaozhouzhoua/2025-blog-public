@@ -17,15 +17,15 @@ export default function Home() {
 	const { maxSM } = useSize()
 
 	return (
-		<div className='min-h-screen flex items-start justify-start p-2'>
-			<div className='flex gap-4 w-full max-w-7xl'>
+		<div className='min-h-screen flex items-start justify-start p-1 pt-4'>
+			<div className='flex gap-2 w-full max-w-7xl'>
 				{/* 左侧导航区域 - 在桌面端显示导航栏，移动端为空 */}
-				<div className='hidden lg:block flex-shrink-0'>
+				<div className='hidden lg:block flex-shrink-0 mr-1 mt-2'>
 					<SidebarNav />
 				</div>
 
 				{/* 右侧主要内容区域 */}
-				<div className='flex-1 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2 auto-rows-max'>
+				<div className='flex-1 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1 auto-rows-max'>
 					{/* 第一行 - 个人信息卡片占2格，头像卡片占1格 */}
 					<div className='xl:col-span-2 md:col-span-2'>
 						<HiCard />
