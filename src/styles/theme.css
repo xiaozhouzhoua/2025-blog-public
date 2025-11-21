@@ -10,3 +10,10 @@
 		'PingFang SC', -apple-system, system-ui, 'Segoe UI', Roboto, Ubuntu, Cantarell, 'Noto Sans', sans-serif, BlinkMacSystemFont, 'Helvetica Neue',
 		'Hiragino Sans GB', 'Microsoft YaHei', Arial;
 }
+
+@layer components {
+	.card {
+		@apply bg-white/40 backdrop-blur-md border border-white/20 rounded-xl shadow-lg relative;
+	}
+}
+
