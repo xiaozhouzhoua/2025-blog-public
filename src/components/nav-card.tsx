@@ -24,8 +24,8 @@ import { cn } from '@/lib/utils'
 import { useSize } from '@/hooks/use-size'
 
 export const styles = {
-	width: 280,
-	height: 434,
+	width: 200,
+	height: 500,
 	order: 2
 }
 
@@ -87,20 +87,20 @@ export default function NavCard() {
 	}, [pathname])
 	if (maxSM) form = 'icons'
 
-	const itemHeight = form === 'full' ? 52 : 28
+	const itemHeight = form === 'full' ? 36 : 28
 
 	let position = useMemo(() => {
 		if (form === 'full')
 			return {
-				x: 32, // 固定在左边距离，稍微靠右一点
-				y: 32 // 从顶部开始的距离，更靠近顶部
+				x: 16, // 更靠近左边
+				y: 16 // 更靠近顶部
 			}
 
 		return {
 			x: 24,
 			y: 16
 		}
-	}, [form, center])
+	}, [form])
 
 	const size = useMemo(() => {
 		if (form === 'mini') return { width: 64, height: 64 }
@@ -127,18 +127,22 @@ export default function NavCard() {
 				height={size.height}
 				x={position.x}
 				y={position.y}
-				className={clsx('overflow-hidden', form === 'mini' && 'p-3', form === 'icons' && 'flex items-center gap-6 p-3')}>
-				<Link className='flex items-center gap-3' href='/'>
-					<Image src='/images/avatar.png' alt='avatar' width={40} height={40} style={{ boxShadow: ' 0 12px 20px -5px #E2D9CE' }} className='rounded-full' />
-					{form === 'full' && <span className='font-averia mt-1 text-2xl leading-none font-medium'>YYsuni</span>}
-					{form === 'full' && <span className='text-brand mt-2 text-xs font-medium'>(开发中)</span>}
-				</Link>
+				className={clsx('overflow-hidden p-3', form === 'mini' && 'p-2', form === 'icons' && 'flex items-center gap-4 p-2')}>
+				{form === 'full' && (
+					<Link className='flex items-center gap-2 mb-4' href='/'>
+						<Image src='/images/avatar.png' alt='avatar' width={32} height={32} style={{ boxShadow: ' 0 8px 16px -4px #E2D9CE' }} className='rounded-full' />
+						<div className='flex flex-col'>
+							<span className='font-averia text-lg leading-none font-medium'>YYsuni</span>
+							<span className='text-brand text-xs font-medium'>(开发中)</span>
+						</div>
+					</Link>
+				)}
 
 				{(form === 'full' || form === 'icons') && (
 					<>
-						{form !== 'icons' && <div className='text-secondary mt-6 text-sm uppercase'>General</div>}
+						{form !== 'icons' && <div className='text-secondary text-xs uppercase mb-2'>Navigation</div>}
 
-						<div className={cn('relative mt-2 space-y-2', form === 'icons' && 'mt-0 flex items-center gap-6 space-y-0')}>
+						<div className={cn('relative space-y-1', form === 'icons' && 'flex items-center gap-4 space-y-0')}>
 							<motion.div
 								className='absolute max-w-[230px] rounded-full border'
 								layoutId='nav-hover'

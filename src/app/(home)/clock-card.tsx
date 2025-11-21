@@ -5,7 +5,7 @@ import SimpleCard from '@/components/simple-card'
 
 export const styles = {
 	width: 293,
-	height: 180,
+	height: 160,
 	offset: 92,
 	order: 4
 }
@@ -27,7 +27,7 @@ export default function ClockCard() {
 	return (
 		<SimpleCard
 			order={styles.order}
-			className='p-6 h-[180px]'>
+			className='p-2 h-[160px]'>
 			<div className='flex h-full w-full items-center justify-center gap-2 rounded-3xl bg-[#DDDDDD]'>
 				<SevenSegmentDigit value={parseInt(hours[0])} />
 				<SevenSegmentDigit value={parseInt(hours[1])} />

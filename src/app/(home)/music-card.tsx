@@ -4,7 +4,7 @@ import PlaySVG from '@/svgs/play.svg'
 
 export const styles = {
 	width: 293,
-	height: 180,
+	height: 160,
 	offset: 120,
 	order: 6
 }
@@ -13,7 +13,7 @@ export default function MusicCard() {
 	return (
 		<SimpleCard
 			order={styles.order}
-			className='flex flex-col items-center justify-center gap-4 p-6 h-[180px]'>
+			className='flex flex-col items-center justify-center gap-2 p-2 h-[160px]'>
 			<MusicSVG className='h-12 w-12' />
 
 			<div className='w-full text-center'>

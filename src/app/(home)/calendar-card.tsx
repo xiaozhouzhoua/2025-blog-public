@@ -7,7 +7,7 @@ dayjs.locale('zh-cn')
 
 export const styles = {
 	width: 293,
-	height: 180,
+	height: 160,
 	order: 5
 }
 
@@ -22,11 +22,11 @@ export default function CalendarCard() {
 	return (
 		<SimpleCard
 			order={styles.order}
-			className='p-3 h-[180px]'>
-			<h3 className='text-secondary text-xs'>
+			className='p-2 h-[160px]'>
+			<h3 className='text-secondary text-xs mb-1'>
 				{now.format('YYYY/M/D')} {now.format('ddd')}
 			</h3>
-			<ul className='text-secondary mt-2 grid h-[130px] grid-cols-7 gap-1 text-xs'>
+			<ul className='text-secondary grid h-[120px] grid-cols-7 gap-0.5 text-xs'>
 				{new Array(7).fill(0).map((_, index) => {
 					const isCurrentWeekday = index === currentWeekday
 					return (
