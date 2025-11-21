@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react'
 import SimpleCard from '@/components/simple-card'
 
 export const styles = {
-	width: 232,
-	height: 132,
+	width: 293,
+	height: 180,
 	offset: 92,
 	order: 4
 }
@@ -27,7 +27,7 @@ export default function ClockCard() {
 	return (
 		<SimpleCard
 			order={styles.order}
-			className='p-2 h-[132px]'>
+			className='p-4 h-[180px]'>
 			<div className='flex h-full w-full items-center justify-center gap-1.5 rounded-4xl bg-[#DDDDDD]'>
 				<SevenSegmentDigit value={parseInt(hours[0])} />
 				<SevenSegmentDigit value={parseInt(hours[1])} />

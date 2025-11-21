@@ -6,8 +6,8 @@ import { cn } from '@/lib/utils'
 dayjs.locale('zh-cn')
 
 export const styles = {
-	width: 350,
-	height: 286,
+	width: 293,
+	height: 180,
 	order: 5
 }
 
@@ -22,11 +22,11 @@ export default function CalendarCard() {
 	return (
 		<SimpleCard
 			order={styles.order}
-			className='p-4 h-[286px]'>
-			<h3 className='text-secondary text-sm'>
+			className='p-3 h-[180px]'>
+			<h3 className='text-secondary text-xs'>
 				{now.format('YYYY/M/D')} {now.format('ddd')}
 			</h3>
-			<ul className='text-secondary mt-3 grid h-[206px] grid-cols-7 gap-2 text-sm'>
+			<ul className='text-secondary mt-2 grid h-[130px] grid-cols-7 gap-1 text-xs'>
 				{new Array(7).fill(0).map((_, index) => {
 					const isCurrentWeekday = index === currentWeekday
 					return (
