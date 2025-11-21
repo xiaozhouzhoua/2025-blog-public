@@ -1,7 +1,5 @@
-import { useCenterStore } from '@/hooks/use-center'
 import GithubSVG from '@/svgs/github.svg'
-import { ANIMATION_DELAY, CARD_SPACING } from '@/consts'
-import { styles as hiCardStyles } from './hi-card'
+import { ANIMATION_DELAY } from '@/consts'
 import JuejinSVG from '@/svgs/juejin.svg'
 import EmailSVG from '@/svgs/email.svg'
 import { motion } from 'motion/react'
@@ -18,7 +16,6 @@ export const styles = {
 let delay = 100
 
 export default function SocialButtons() {
-	const center = useCenterStore()
 	const { maxSM, init } = useSize()
 	if (maxSM && init) {
 		styles.order = 0
@@ -36,10 +33,11 @@ export default function SocialButtons() {
 	if (show)
 		return (
 			<motion.div
-				className='absolute max-sm:static'
-				animate={{ left: center.x + hiCardStyles.width / 2, top: center.y + hiCardStyles.height / 2 + CARD_SPACING }}
-				initial={{ left: center.x + hiCardStyles.width / 2, top: center.y + hiCardStyles.height / 2 + CARD_SPACING }}>
-				<div className='absolute top-0 right-0 flex items-center gap-3 max-sm:static'>
+				className='max-sm:static'
+				initial={{ opacity: 0, y: 20 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5, delay: styles.order * ANIMATION_DELAY }}>
+				<div className='flex items-center gap-3 max-sm:justify-center'>
 					{tertiaryShow && (
 						<motion.a
 							href='https://github.com/yysuni'

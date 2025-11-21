@@ -50,7 +50,7 @@ export default function Layout({ children }: PropsWithChildren) {
 				{children}
 				<NavCard />
 			</main>
-			<LiquidGrass />
+			{/* <LiquidGrass /> */}
 		</>
 	)
 }

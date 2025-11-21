@@ -1,10 +1,7 @@
-import { ANIMATION_DELAY, CARD_SPACING } from '@/consts'
+import { ANIMATION_DELAY } from '@/consts'
 import PenSVG from '@/svgs/pen.svg'
 import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
-import { styles as hiCardStyles } from './hi-card'
-import { styles as clockCardStyles } from './clock-card'
-import { useCenterStore } from '@/hooks/use-center'
 import { useRouter } from 'next/navigation'
 import { useSize } from '@/hooks/use-size'
 import DotsSVG from '@/svgs/dots.svg'
@@ -16,7 +13,6 @@ const styles = {
 }
 
 export default function WriteButton() {
-	const center = useCenterStore()
 	const { maxSM } = useSize()
 	const router = useRouter()
 	const [isConfigOpen, setIsConfigOpen] = useState(false)
@@ -32,15 +28,10 @@ export default function WriteButton() {
 
 	return (
 		<motion.div
-			initial={{
-				left: center.x + CARD_SPACING + hiCardStyles.width / 2,
-				top: center.y - clockCardStyles.offset - styles.height - CARD_SPACING / 2 - clockCardStyles.height
-			}}
-			animate={{
-				left: center.x + CARD_SPACING + hiCardStyles.width / 2,
-				top: center.y - clockCardStyles.offset - styles.height - CARD_SPACING / 2 - clockCardStyles.height
-			}}
-			className='absolute flex items-center gap-4'>
+			initial={{ opacity: 0, y: 20 }}
+			animate={{ opacity: 1, y: 0 }}
+			transition={{ duration: 0.5, delay: styles.order * ANIMATION_DELAY }}
+			className='flex items-center gap-4'>
 			<motion.button
 				onClick={() => router.push('/write')}
 				initial={{ opacity: 0, scale: 0.6 }}

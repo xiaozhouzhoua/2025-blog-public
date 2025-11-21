@@ -1,9 +1,5 @@
-import Card from '@/components/card'
-import { useCenterStore } from '@/hooks/use-center'
+import SimpleCard from '@/components/simple-card'
 import { useLatestBlog } from '@/hooks/use-blog-index'
-import { styles as hiCardStyles } from './hi-card'
-import { styles as socialButtonsStyles } from './social-buttons'
-import { CARD_SPACING } from '@/consts'
 import dayjs from 'dayjs'
 import Link from 'next/link'
 
@@ -13,16 +9,12 @@ export const styles = {
 }
 
 export default function ArticleCard() {
-	const center = useCenterStore()
 	const { blog, loading } = useLatestBlog()
 
 	return (
-		<Card
+		<SimpleCard
 			order={styles.order}
-			width={styles.width}
-			x={center.x + hiCardStyles.width / 2 - socialButtonsStyles.width - CARD_SPACING - styles.width}
-			y={center.y + hiCardStyles.height / 2 + CARD_SPACING}
-			className='space-y-2 max-sm:static'>
+			className='p-4 space-y-2'>
 			<h2 className='text-secondary text-sm'>最新文章</h2>
 
 			{loading ? (
@@ -47,6 +39,6 @@ export default function ArticleCard() {
 					<span className='text-secondary text-xs'>暂无文章</span>
 				</div>
 			)}
-		</Card>
+		</SimpleCard>
 	)
 }

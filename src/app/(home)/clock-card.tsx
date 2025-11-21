@@ -1,10 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Card from '@/components/card'
-import { useCenterStore } from '@/hooks/use-center'
-import { CARD_SPACING } from '@/consts'
-import { styles as hiCardStyles } from './hi-card'
+import SimpleCard from '@/components/simple-card'
 
 export const styles = {
 	width: 232,
@@ -14,7 +11,6 @@ export const styles = {
 }
 
 export default function ClockCard() {
-	const center = useCenterStore()
 	const [time, setTime] = useState(new Date())
 
 	useEffect(() => {
@@ -29,13 +25,9 @@ export default function ClockCard() {
 	const minutes = time.getMinutes().toString().padStart(2, '0')
 
 	return (
-		<Card
+		<SimpleCard
 			order={styles.order}
-			width={styles.width}
-			height={styles.height}
-			x={center.x + CARD_SPACING + hiCardStyles.width / 2}
-			y={center.y - styles.offset - styles.height}
-			className='p-2'>
+			className='p-2 h-[132px]'>
 			<div className='flex h-full w-full items-center justify-center gap-1.5 rounded-4xl bg-[#DDDDDD]'>
 				<SevenSegmentDigit value={parseInt(hours[0])} />
 				<SevenSegmentDigit value={parseInt(hours[1])} />
@@ -43,7 +35,7 @@ export default function ClockCard() {
 				<SevenSegmentDigit value={parseInt(minutes[0])} />
 				<SevenSegmentDigit value={parseInt(minutes[1])} />
 			</div>
-		</Card>
+		</SimpleCard>
 	)
 }
 
