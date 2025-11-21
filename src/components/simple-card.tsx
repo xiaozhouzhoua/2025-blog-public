@@ -30,5 +30,10 @@ export default function SimpleCard({ children, order = 0, className }: Props) {
 			</motion.div>
 		)
 
-	return null
+	// Return a placeholder that maintains space but is invisible during delay
+	return (
+		<div className={cn('card w-full h-full opacity-0', className)}>
+			{children}
+		</div>
+	)
 }
