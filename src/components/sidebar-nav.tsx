@@ -68,40 +68,29 @@ export default function SidebarNav() {
 	}, [hoveredIndex, activeIndex])
 
 	return (
-		<div className='w-48 h-fit bg-white rounded-3xl p-3 shadow-lg'>
-			<Link className='flex items-center gap-2 mb-3' href='/'>
+		<div className='w-16 h-fit bg-white rounded-3xl p-3 shadow-lg'>
+			<Link className='flex items-center justify-center mb-3' href='/'>
 				<Image src='/images/avatar.png' alt='avatar' width={28} height={28} style={{ boxShadow: ' 0 6px 12px -3px #E2D9CE' }} className='rounded-full' />
-				<div className='flex flex-col'>
-					<span className='font-averia text-sm leading-none font-medium'>YYsuni</span>
-					<span className='text-brand text-xs font-medium'>(开发中)</span>
-				</div>
 			</Link>
 
-			<div className='text-secondary text-xs uppercase mb-2'>Navigation</div>
-			<div className='relative space-y-1'>
-				<div
-					className='absolute w-full rounded-full border bg-gradient-to-r from-white to-gray-50'
-					style={{
-						top: hoveredIndex * 40,
-						height: 36,
-						transition: 'all 0.3s ease'
-					}}
-				/>
+			<div className='flex flex-col items-center space-y-2'>
 				{list.map((item, index) => (
 					<Link
 						key={item.href}
 						href={item.href}
-						className='relative z-10 text-secondary text-sm flex items-center gap-2 rounded-full px-3 py-2 transition-colors'
+						className={cn(
+							'flex h-10 w-10 items-center justify-center rounded-xl transition-all',
+							activeIndex === index
+								? 'bg-orange-500 text-white'
+								: 'text-gray-400 hover:text-gray-600'
+						)}
 						onMouseEnter={() => setHoveredIndex(index)}>
 						<div className='flex h-5 w-5 items-center justify-center'>
-							{hoveredIndex === index ?
-								<item.iconActive className='text-brand h-5 w-5' /> :
+							{activeIndex === index ?
+								<item.iconActive className='h-5 w-5' /> :
 								<item.icon className='h-5 w-5' />
 							}
 						</div>
-						<span className={cn(index === hoveredIndex && 'text-primary font-medium')}>
-							{item.label}
-						</span>
 					</Link>
 				))}
 			</div>
