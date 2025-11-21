@@ -11,6 +11,7 @@ import AritcleCard from '@/app/(home)/aritcle-card'
 import WriteButtons from '@/app/(home)/write-buttons'
 import LikePosition from './like-position'
 import { useSize } from '@/hooks/use-size'
+import SidebarNav from '@/components/sidebar-nav'
 
 export default function Home() {
 	const { maxSM } = useSize()
@@ -19,8 +20,8 @@ export default function Home() {
 		<div className='min-h-screen flex items-start justify-start p-2'>
 			<div className='flex gap-4 w-full max-w-7xl'>
 				{/* 左侧导航区域 - 在桌面端显示导航栏，移动端为空 */}
-				<div className='hidden lg:block w-48 flex-shrink-0'>
-					{/* 导航栏由NavCard组件绝对定位处理，这里留空 */}
+				<div className='hidden lg:block flex-shrink-0'>
+					<SidebarNav />
 				</div>
 
 				{/* 右侧主要内容区域 */}

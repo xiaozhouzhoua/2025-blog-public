@@ -71,6 +71,11 @@ export default function NavCard() {
 	const { maxSM } = useSize()
 	const [hoveredIndex, setHoveredIndex] = useState<number>(0)
 
+	// 在首页时不显示这个导航栏，使用SidebarNav替代
+	if (pathname === '/') {
+		return null
+	}
+
 	const activeIndex = useMemo(() => {
 		const index = list.findIndex(item => pathname === item.href)
 		return index >= 0 ? index : undefined
