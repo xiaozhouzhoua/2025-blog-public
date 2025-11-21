@@ -4,7 +4,7 @@ import { codeInspectorPlugin } from 'code-inspector-plugin'
 const nextConfig: NextConfig = {
 	devIndicators: false,
 	reactStrictMode: false,
-	reactCompiler: true,
+	reactCompiler: false,
 	pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
 	experimental: {
 		scrollRestoration: false
@@ -18,9 +18,7 @@ const nextConfig: NextConfig = {
 			// ...codeInspectorPlugin({
 			// 	bundler: 'turbopack'
 			// })
-		},
-
-		resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json', '.css']
+		}
 	},
 	webpack: config => {
 		config.module.rules.push({
