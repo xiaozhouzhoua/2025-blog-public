@@ -92,8 +92,8 @@ export default function NavCard() {
 	let position = useMemo(() => {
 		if (form === 'full')
 			return {
-				x: center.x - hiCardStyles.width / 2 - styles.width - CARD_SPACING,
-				y: center.y + hiCardStyles.height / 2 - styles.height
+				x: 24, // 固定在左边距离
+				y: 96 // 从顶部开始的距离
 			}
 
 		return {
