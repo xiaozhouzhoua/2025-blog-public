@@ -31,7 +31,7 @@ export default function WriteButton() {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5, delay: styles.order * ANIMATION_DELAY }}
-			className='flex items-center gap-4'>
+			className='flex items-center justify-between w-full gap-2'>
 			<motion.button
 				onClick={() => router.push('/write')}
 				initial={{ opacity: 0, scale: 0.6 }}
@@ -39,7 +39,7 @@ export default function WriteButton() {
 				whileHover={{ scale: 1.05 }}
 				whileTap={{ scale: 0.95 }}
 				style={{ boxShadow: 'inset 0 0 12px rgba(255, 255, 255, 0.4)' }}
-				className='brand-btn whitespace-nowrap'>
+				className='brand-btn whitespace-nowrap flex-1 justify-center'>
 				<PenSVG />
 				<span>写文章</span>
 			</motion.button>
@@ -49,7 +49,7 @@ export default function WriteButton() {
 				whileHover={{ scale: 1.05 }}
 				whileTap={{ scale: 0.95 }}
 				onClick={() => setIsConfigOpen(true)}
-				className='p-2'>
+				className='p-2 rounded-lg hover:bg-gray-100 transition-colors'>
 				<DotsSVG className='h-6 w-6' />
 			</motion.button>
 			<ConfigDialog open={isConfigOpen} onClose={() => setIsConfigOpen(false)} />

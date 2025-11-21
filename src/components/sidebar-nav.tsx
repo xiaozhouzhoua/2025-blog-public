@@ -68,28 +68,37 @@ export default function SidebarNav() {
 	}, [hoveredIndex, activeIndex])
 
 	return (
-		<div className='w-20 h-fit bg-white rounded-3xl p-4 shadow-lg'>
-			<Link className='flex items-center justify-center mb-4' href='/'>
-				<Image src='/images/avatar.png' alt='avatar' width={36} height={36} style={{ boxShadow: ' 0 6px 12px -3px #E2D9CE' }} className='rounded-full' />
-			</Link>
+		<div className='sidebar-nav h-fit w-64 bg-white backdrop-blur-xl rounded-3xl p-4 shadow-lg transition-all duration-300'>
+			<div className='flex items-center gap-3 mb-4'>
+				<Link href='/' className='flex items-center gap-3'>
+					<Image src='/images/avatar.png' alt='avatar' width={48} height={48} style={{ boxShadow: ' 0 6px 12px -3px #E2D9CE' }} className='rounded-full' />
+					<div className='flex flex-col'>
+						<span className='font-averia text-lg leading-none font-medium text-gray-800'>小周</span>
+					</div>
+				</Link>
+			</div>
 
-			<div className='flex flex-col items-center space-y-3'>
+			<div className='flex flex-col items-start space-y-3'>
 				{list.map((item, index) => (
 					<Link
 						key={item.href}
 						href={item.href}
 						className={cn(
-							'flex h-12 w-12 items-center justify-center rounded-xl transition-all',
+							'flex items-center gap-4 px-4 py-3 w-full rounded-xl transition-all duration-200 hover:scale-105 nav-item',
 							activeIndex === index
-								? 'bg-orange-500 text-white'
-								: 'text-gray-400 hover:text-gray-600'
+								? 'bg-orange-500 text-white shadow-md'
+								: 'text-gray-400 hover:text-gray-600 hover:bg-gray-50'
 						)}
 						onMouseEnter={() => setHoveredIndex(index)}>
-						<div className='flex h-6 w-6 items-center justify-center'>
+						<div className='flex items-center justify-center h-6 w-6'>
 							{activeIndex === index ?
 								<item.iconActive className='h-6 w-6' /> :
 								<item.icon className='h-6 w-6' />
 							}
+						</div>
+						<div className='flex items-center gap-2'>
+							<span className={cn('text-sm', index === activeIndex && 'font-medium')}>{item.label}</span>
+							{activeIndex === index && <span className='text-xs opacity-75'>小周</span>}
 						</div>
 					</Link>
 				))}

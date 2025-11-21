@@ -24,6 +24,12 @@
 		@apply border-border;
 	}
 
+	/* 黑暗模式背景 */
+	body {
+		@apply bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50;
+	}
+}
+
 	input:focus,
 	textarea:focus {
 		outline: none;
@@ -48,10 +54,9 @@
 		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
 		@apply bg-white/40! backdrop-blur;
 	}
-}
 
 @utility card {
-	@apply rounded-[40px] border bg-white/40 p-6;
+	@apply rounded-[40px] border bg-white p-6;
 	box-shadow:
 		0 40px 50px -32px rgba(0, 0, 0, 0.05),
 		inset 0 0 20 rgba(255, 255, 255, 0.25);

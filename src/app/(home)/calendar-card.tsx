@@ -23,10 +23,7 @@ export default function CalendarCard() {
 		<SimpleCard
 			order={styles.order}
 			className='p-2 h-[160px]'>
-			<h3 className='text-secondary text-xs mb-1'>
-				{now.format('YYYY/M/D')} {now.format('ddd')}
-			</h3>
-			<ul className='text-secondary grid h-[120px] grid-cols-7 gap-0.5 text-xs'>
+			<ul className='text-secondary grid h-[145px] grid-cols-7 gap-0.5 text-xs'>
 				{new Array(7).fill(0).map((_, index) => {
 					const isCurrentWeekday = index === currentWeekday
 					return (

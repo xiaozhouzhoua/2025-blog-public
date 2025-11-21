@@ -24,7 +24,7 @@ import { cn } from '@/lib/utils'
 import { useSize } from '@/hooks/use-size'
 
 export const styles = {
-	width: 200,
+	width: 280,  // 增加宽度从200到280
 	height: 500,
 	order: 2
 }
@@ -71,11 +71,6 @@ export default function NavCard() {
 	const { maxSM } = useSize()
 	const [hoveredIndex, setHoveredIndex] = useState<number>(0)
 
-	// 在首页时不显示这个导航栏，使用SidebarNav替代
-	if (pathname === '/') {
-		return null
-	}
-
 	const activeIndex = useMemo(() => {
 		const index = list.findIndex(item => pathname === item.href)
 		return index >= 0 ? index : undefined
@@ -85,27 +80,34 @@ export default function NavCard() {
 		setShow(true)
 	}, [])
 
-	let form = useMemo(() => {
+	const form = useMemo(() => {
+		if (maxSM) return 'icons'
 		if (pathname == '/') return 'full'
 		else if (pathname == '/write') return 'mini'
 		else return 'icons'
-	}, [pathname])
-	if (maxSM) form = 'icons'
+	}, [pathname, maxSM])
 
 	const itemHeight = form === 'full' ? 36 : 28
 
-	let position = useMemo(() => {
+	const position = useMemo(() => {
+		if (maxSM) {
+			const sizeForPosition = form === 'mini' ? { width: 64, height: 64 }
+				: form === 'icons' ? { width: 340, height: 64 }
+				: { width: styles.width, height: styles.height }
+			return { x: center.x - sizeForPosition.width / 2, y: 16 }
+		}
+
 		if (form === 'full')
 			return {
-				x: 16, // 更靠近左边
-				y: 16 // 更靠近顶部
+				x: 24, // 增加左边距
+				y: 24 // 增加顶部边距
 			}
 
 		return {
-			x: 24,
-			y: 16
+			x: 32,
+			y: 24
 		}
-	}, [form])
+	}, [form, maxSM, center.x])
 
 	const size = useMemo(() => {
 		if (form === 'mini') return { width: 64, height: 64 }
@@ -122,7 +124,10 @@ export default function NavCard() {
 		}
 	}, [hoveredIndex, activeIndex, form])
 
-	if (maxSM) position = { x: center.x - size.width / 2, y: 16 }
+	// 在首页时不显示这个导航栏，使用SidebarNav替代
+	if (pathname === '/') {
+		return null
+	}
 
 	if (show)
 		return (
@@ -145,11 +150,11 @@ export default function NavCard() {
 
 				{(form === 'full' || form === 'icons') && (
 					<>
-						{form !== 'icons' && <div className='text-secondary text-xs uppercase mb-2'>Navigation</div>}
+						{form !== 'icons' && <div className='text-secondary text-xs uppercase mb-3'>Navigation</div>}
 
-						<div className={cn('relative space-y-1', form === 'icons' && 'flex items-center gap-4 space-y-0')}>
+						<div className={cn('relative space-y-2', form === 'icons' && 'flex items-center gap-4 space-y-0')}>
 							<motion.div
-								className='absolute max-w-[230px] rounded-full border'
+								className='absolute max-w-[260px] rounded-full border'  // 增加最大宽度
 								layoutId='nav-hover'
 								initial={false}
 								animate={
@@ -160,7 +165,7 @@ export default function NavCard() {
 												width: itemHeight + extraSize * 2,
 												height: itemHeight + extraSize * 2
 											}
-										: { top: hoveredIndex * (itemHeight + 8), left: 0, width: '100%', height: itemHeight }
+										: { top: hoveredIndex * (itemHeight + 12), left: 0, width: '100%', height: itemHeight }  // 增加间距
 								}
 								transition={{
 									type: 'spring',
@@ -174,7 +179,7 @@ export default function NavCard() {
 								<Link
 									key={item.href}
 									href={item.href}
-									className={cn('text-secondary text-md relative z-10 flex items-center gap-3 rounded-full px-5 py-3', form === 'icons' && 'p-0')}
+									className={cn('text-secondary text-md relative z-10 flex items-center gap-4 rounded-full px-6 py-3', form === 'icons' && 'p-0')}  // 增加间距和padding
 									onMouseEnter={() => setHoveredIndex(index)}>
 									<div className='flex h-7 w-7 items-center justify-center'>
 										{hoveredIndex == index ? <item.iconActive className='text-brand absolute h-7 w-7' /> : <item.icon className='absolute h-7 w-7' />}

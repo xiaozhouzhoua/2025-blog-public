@@ -11,9 +11,13 @@ export const styles = {
 }
 
 export default function ClockCard() {
-	const [time, setTime] = useState(new Date())
+	const [time, setTime] = useState<Date | null>(null)
+	const [mounted, setMounted] = useState(false)
 
 	useEffect(() => {
+		setMounted(true)
+		setTime(new Date())
+
 		const timer = setInterval(() => {
 			setTime(new Date())
 		}, 5000)
@@ -21,8 +25,10 @@ export default function ClockCard() {
 		return () => clearInterval(timer)
 	}, [])
 
-	const hours = time.getHours().toString().padStart(2, '0')
-	const minutes = time.getMinutes().toString().padStart(2, '0')
+	// During SSR, render a static time or placeholder
+	const displayTime = mounted ? time : new Date()
+	const hours = displayTime?.getHours().toString().padStart(2, '0') || '00'
+	const minutes = displayTime?.getMinutes().toString().padStart(2, '0') || '00'
 
 	return (
 		<SimpleCard

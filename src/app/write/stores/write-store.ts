@@ -41,7 +41,7 @@ const initialForm: PublishForm = {
 	title: '',
 	md: '',
 	tags: [],
-	date: new Date().toISOString().slice(0, 10),
+	date: '', // Will be set on client side
 	summary: ''
 }
 
@@ -197,7 +197,7 @@ export const useWriteStore = create<WriteStore>((set, get) => ({
 		set({
 			mode: 'create',
 			originalSlug: null,
-			form: { ...initialForm, date: new Date().toISOString().slice(0, 10) },
+			form: { ...initialForm }, // Date will be set by the page component
 			images: [],
 			cover: null
 		})

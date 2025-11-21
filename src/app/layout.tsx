@@ -33,12 +33,13 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 		<html lang='en' suppressHydrationWarning>
 			<Head />
 
-			<body style={bodyStyle}>
+			<body style={bodyStyle} suppressHydrationWarning>
 				<script
 					dangerouslySetInnerHTML={{
 						__html: `
+						// Windows 平台检测
 						if (window && /windows|win32/i.test(navigator.userAgent)) {
-							setTimeout(() => document.documentElement.classList.add('windows'), 0)			
+							setTimeout(() => document.documentElement.classList.add('windows'), 0)
 						}
 			      `
 					}}

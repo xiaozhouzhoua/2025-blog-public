@@ -9,9 +9,14 @@ import { WritePreview } from './components/preview'
 import { useEffect } from 'react'
 
 export default function WritePage() {
-	const { form, cover, reset } = useWriteStore()
-	useEffect(() => reset(), [])
+	const { form, cover, reset, updateForm } = useWriteStore()
 	const { isPreview, closePreview } = usePreviewStore()
+
+	useEffect(() => {
+		reset()
+		// Set current date on client side only
+		updateForm({ date: new Date().toISOString().slice(0, 10) })
+	}, [])
 
 	const coverPreviewUrl = cover ? (cover.type === 'url' ? cover.url : cover.previewUrl) : null
 
