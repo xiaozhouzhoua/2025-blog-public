@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
 			// })
 		},
 
-		resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json', 'css']
+		resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json', '.css']
 	},
 	webpack: config => {
 		config.module.rules.push({
